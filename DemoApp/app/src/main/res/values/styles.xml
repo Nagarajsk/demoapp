@@ -1,0 +1,31 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
+        <!-- Customize your theme here. -->
+    <!--<style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!--This item is used to change the color of 3 line Navigation Icon-->
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
+    <!--This style is used to change the color of 3 line Navigation Icon-->
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay">
+        <!--<item name="windowActionBar">false</item>-->
+    </style>
+
+    <style name="AppTheme.PopupOverlay">
+        <!--<item name="windowActionBar">false</item>-->
+    </style>
+
+</resources>
