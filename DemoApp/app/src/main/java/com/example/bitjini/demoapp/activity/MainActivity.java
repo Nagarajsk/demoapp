@@ -14,7 +14,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -26,30 +25,24 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.bitjini.demoapp.R;
+import com.example.bitjini.demoapp.fragment.ContactFragment;
+import com.example.bitjini.demoapp.fragment.DepartmentsFragment;
+import com.example.bitjini.demoapp.fragment.EnquiryFragment;
 import com.example.bitjini.demoapp.fragment.HomeFragment;
-import com.example.bitjini.demoapp.fragment.MoviesFragment;
-import com.example.bitjini.demoapp.fragment.NotificationsFragment;
-import com.example.bitjini.demoapp.fragment.PhotosFragment;
-import com.example.bitjini.demoapp.fragment.SettingsFragment;
-import com.example.bitjini.demoapp.other.CircleTransform;
+import com.example.bitjini.demoapp.fragment.TeamFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
-import java.security.MessageDigest;
-
 public class MainActivity extends AppCompatActivity implements
         HomeFragment.OnFragmentInteractionListener,
-        PhotosFragment.OnFragmentInteractionListener,
-        MoviesFragment.OnFragmentInteractionListener,
-        NotificationsFragment.OnFragmentInteractionListener,
-        SettingsFragment.OnFragmentInteractionListener {
+        TeamFragment.OnFragmentInteractionListener,
+        EnquiryFragment.OnFragmentInteractionListener,
+        DepartmentsFragment.OnFragmentInteractionListener,
+        ContactFragment.OnFragmentInteractionListener {
 
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -129,9 +122,9 @@ public class MainActivity extends AppCompatActivity implements
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
         // Navigation view header
-        navHeader = navigationView.getHeaderView(0);
-        txtName = (TextView) navHeader.findViewById(R.id.name);
-        txtWebsite = (TextView) navHeader.findViewById(R.id.website);
+//        navHeader = navigationView.getHeaderView(0);
+//        txtName = (TextView) navHeader.findViewById(R.id.name);
+//        txtWebsite = (TextView) navHeader.findViewById(R.id.website);
        // imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
        // imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
 
@@ -225,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
         // load nav menu header data
-        loadNavHeader();
+//        loadNavHeader();
 
         // initializing navigation menu
         setUpNavigationView();
@@ -251,28 +244,28 @@ public class MainActivity extends AppCompatActivity implements
      * like background image, profile image
      * name, website, notifications action view (dot)
      */
-    private void loadNavHeader() {
-        // name, website
-        txtName.setText("Nagaraj S K");
-        txtWebsite.setText("www.bitjini.com");
-
-        // loading header background image
-        /*Glide.with(this).load(urlNavHeaderBg)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgNavHeaderBg);
-
-        // Loading profile image
-        Glide.with(this).load(urlProfileImg)
-                .crossFade()
-                .thumbnail(0.5f)
-                .bitmapTransform(new CircleTransform(this))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgProfile);
-
-        // showing dot next to notifications label
-        navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);*/
-    }
+//    private void loadNavHeader() {
+//        // name, website
+//        txtName.setText("Nagaraj S K");
+//        txtWebsite.setText("www.bitjini.com");
+//
+//        // loading header background image
+//        /*Glide.with(this).load(urlNavHeaderBg)
+//                .crossFade()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imgNavHeaderBg);
+//
+//        // Loading profile image
+//        Glide.with(this).load(urlProfileImg)
+//                .crossFade()
+//                .thumbnail(0.5f)
+//                .bitmapTransform(new CircleTransform(this))
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imgProfile);
+//
+//        // showing dot next to notifications label
+//        navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);*/
+//    }
 
     /***
      * Returns respected fragment that user
@@ -335,21 +328,21 @@ public class MainActivity extends AppCompatActivity implements
                 return homeFragment;
             case 1:
                 // photos
-                PhotosFragment photosFragment = new PhotosFragment();
-                return photosFragment;
+                TeamFragment teamFragment = new TeamFragment();
+                return teamFragment;
             case 2:
                 // movies fragment
-                MoviesFragment moviesFragment = new MoviesFragment();
-                return moviesFragment;
+                EnquiryFragment enquiryFragment = new EnquiryFragment();
+                return enquiryFragment;
             case 3:
                 // notifications fragment
-                NotificationsFragment notificationsFragment = new NotificationsFragment();
-                return notificationsFragment;
+                DepartmentsFragment departmentsFragment = new DepartmentsFragment();
+                return departmentsFragment;
 
             case 4:
                 // settings fragment
-                SettingsFragment settingsFragment = new SettingsFragment();
-                return settingsFragment;
+                ContactFragment contactFragment = new ContactFragment();
+                return contactFragment;
             default:
                 return new HomeFragment();
         }
@@ -394,16 +387,7 @@ public class MainActivity extends AppCompatActivity implements
                         navItemIndex = 4;
                         CURRENT_TAG = TAG_CONTACT;
                         break;
-                    case R.id.nav_about_us:
-                        // launch new intent instead of loading fragment
-                        startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-                        drawer.closeDrawers();
-                        return true;
-                    case R.id.nav_privacy_policy:
-                        // launch new intent instead of loading fragment
-                        startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
-                        drawer.closeDrawers();
-                        return true;
+
                     default:
                         navItemIndex = 0;
                 }
