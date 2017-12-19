@@ -1,6 +1,7 @@
 package com.example.bitjini.demoapp.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,10 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -43,6 +48,7 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements
         HomeFragment.OnFragmentInteractionListener,
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements
     //private ImageView imgNavHeaderBg, imgProfile;
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
-    private FloatingActionButton fab;
+   // private FloatingActionButton fab;
 
     //These elements for Login details
     Button toolbar_loginbtn;
@@ -84,16 +90,16 @@ public class MainActivity extends AppCompatActivity implements
     //Recycler view
     RecyclerView recyclerView;
 
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+
+
     String[] title;
-    int [] Img_res = {R.drawable.icon_1,R.drawable.icon_2,R.drawable.icon_3,R.drawable.icon_4};
+    int [] Img_res = {R.drawable.icon_1,R.drawable.icon_2,R.drawable.icon_3,R.drawable.icon_4,R.drawable.icon_5};
+    ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
 
-    // urls to load navigation header background image
-    // and profile image
-    //https://api.androidhive.info/images/nav-menu-header-bg.jpg
-    private static final String urlNavHeaderBg = "";
 
-    //https://lh3.googleusercontent.com/eCtE_G34M9ygdkmOpYvCag1vBARCmZwnVS6rS5t4JLzJ6QgQSBquM0nuTsCpLhYbKljoyS-txg
-    private static final String urlProfileImg = "";
+
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab = (FloatingActionButton) findViewById(R.id.fab);
 
         // Navigation view header
         navHeader = navigationView.getHeaderView(0);
@@ -138,13 +144,7 @@ public class MainActivity extends AppCompatActivity implements
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         //Downcast the login related elements
         toolbar_loginbtn = (Button)findViewById(R.id.login);
@@ -214,13 +214,59 @@ public class MainActivity extends AppCompatActivity implements
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
 
-
+/**********************************RecyclerView***************************/
         recyclerView = (RecyclerView)findViewById(R.id.cardList);
-
         title = getResources().getStringArray(R.array.cardview_title);
 
+        int i= 0;
 
+        for (String name : title)
+        {
+            DataProvider dataprovider = new DataProvider(Img_res[i],name);
+            arrayList.add(dataprovider);
+            i++;
+        }
 
+        adapter = new RecyclerAdapter(arrayList);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+/**********************************RecyclerView***************************/
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+
+            @Override
+            public void onClick(View view, int position) {
+//                Toast.makeText(MainActivity.this, "Position :"+position, Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0 :
+                       gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/appointment.html");
+                       break;
+
+                    case 1 :
+                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/doctors.html");
+                        break;
+
+                    case 2:
+                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/services.html");
+                        break;
+
+                    case 3:
+                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/locations.html");
+                        break;
+
+                    case 4:
+                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/contact.html");
+                        break;
+                }
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
 
 
@@ -235,7 +281,66 @@ public class MainActivity extends AppCompatActivity implements
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
+    }// EnD OF ONCREATE()
+
+    public void gotoIntent(String url){
+        Intent intent = new Intent(MainActivity.this, Webview_activity.class);
+        intent.putExtra("URL",url);
+        startActivity(intent);
     }
+
+
+    public interface ClickListener {
+        void onClick(View view, int position);
+
+        void onLongClick(View view, int position);
+    }
+
+    static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
+
+        private GestureDetector gestureDetector;
+        private ClickListener clickListener;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
+            this.clickListener = clickListener;
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && clickListener != null) {
+                        clickListener.onLongClick(child, recyclerView.getChildPosition(child));
+                    }
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
+                clickListener.onClick(child, rv.getChildPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+    }
+
+
+
 
 
     //This is called for CarouselView of images
@@ -256,22 +361,7 @@ public class MainActivity extends AppCompatActivity implements
         txtName.setText("Nagaraj S K");
         txtWebsite.setText("www.bitjini.com");
 
-        // loading header background image
-        /*Glide.with(this).load(urlNavHeaderBg)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgNavHeaderBg);
 
-        // Loading profile image
-        Glide.with(this).load(urlProfileImg)
-                .crossFade()
-                .thumbnail(0.5f)
-                .bitmapTransform(new CircleTransform(this))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(imgProfile);
-
-        // showing dot next to notifications label
-        navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);*/
     }
 
     /***
@@ -287,13 +377,13 @@ public class MainActivity extends AppCompatActivity implements
 
         // if user select the current navigation menu again, don't do anything
         // just close the navigation drawer
-        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
-            drawer.closeDrawers();
-
-            // show or hide the fab button
-            toggleFab();
-            return;
-        }
+//        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
+//            drawer.closeDrawers();
+//
+//            // show or hide the fab button
+//            toggleFab();
+//            return;
+//        }
 
         // Sometimes, when fragment has huge data, screen seems hanging
         // when switching between navigation menus
@@ -318,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         // show or hide the fab button
-        toggleFab();
+        //toggleFab();
 
         //Closing drawer on item click
         drawer.closeDrawers();
@@ -423,7 +513,9 @@ public class MainActivity extends AppCompatActivity implements
         });
 
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+        ActionBarDrawerToggle actionBarDrawerToggle = new
+                ActionBarDrawerToggle(this, drawer, toolbar,
+                        R.string.openDrawer, R.string.closeDrawer) {
 
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -512,14 +604,7 @@ public class MainActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    // show or hide the fab
-    private void toggleFab() {
-        if (navItemIndex == 0)
-            fab.show();
-        else
-            fab.hide();
-    }
-
+  //dfhjdhgd
     @Override
     public void onFragmentInteraction(Uri uri) {
 
