@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/nav_home" />
+
+        <item
+            android:id="@+id/nav_team"
+            android:title="@string/nav_team" />
+
+        <item
+            android:id="@+id/nav_enquiry"
+            android:title="@string/nav_enquiry" />
+
+        <item
+            android:id="@+id/nav_departments"
+            android:title="@string/nav_departments" />
+
+        <item
+            android:id="@+id/nav_contact"
+            android:title="@string/nav_contact" />
+    </group>
+
+</menu>

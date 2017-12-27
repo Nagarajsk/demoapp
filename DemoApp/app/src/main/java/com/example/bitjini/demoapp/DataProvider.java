@@ -1,4 +1,4 @@
-package com.example.bitjini.demoapp.activity;
+package com.example.bitjini.demoapp;
 
 /**
  * Created by bitjini on 16/12/17.

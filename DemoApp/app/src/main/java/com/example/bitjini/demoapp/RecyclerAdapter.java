@@ -1,4 +1,4 @@
-package com.example.bitjini.demoapp.activity;
+package com.example.bitjini.demoapp;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.bitjini.demoapp.R;
 
 import java.util.ArrayList;
 

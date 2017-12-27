@@ -1,4 +1,4 @@
-package com.example.bitjini.demoapp.activity;
+package com.example.bitjini.demoapp;
 
 import android.content.Context;
 import android.content.Intent;

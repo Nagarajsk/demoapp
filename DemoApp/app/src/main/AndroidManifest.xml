@@ -3,15 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bitjini.demoapp">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
-    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>-->
-    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
-    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".MainActivity">
 
             <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
             <intent-filter>
@@ -28,9 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AboutUsActivity" />
-        <activity android:name=".activity.PrivacyPolicyActivity" />
-        <activity android:name=".activity.Webview_activity"/>
+        <activity android:name=".Webview_activity" />
+        <activity android:name=".Navigation_Drawer"></activity>
     </application>
 
 </manifest>
