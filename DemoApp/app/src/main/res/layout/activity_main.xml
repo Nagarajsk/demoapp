@@ -26,4 +26,42 @@
 
         android:scrollbars="vertical" />
 
+    <!-- Footer aligned to bottom -->
+    <LinearLayout
+        android:weightSum="4"
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="left"
+        android:orientation="horizontal">
+   <Button
+       android:layout_weight="1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:background="@color/fb"
+       android:drawableStart="@drawable/facebook"/>
+
+   <Button
+       android:layout_weight="1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+        android:background="@color/g_plus"
+       android:drawableStart="@drawable/google_plus"/>
+
+   <Button
+       android:layout_weight="1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:background="@color/twit"
+       android:drawableStart="@drawable/twitter"/>
+
+   <Button
+       android:layout_weight="1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:background="@color/wireless"
+       android:drawableStart="@drawable/wifi_wireless"/>
+   </LinearLayout>
+
 </LinearLayout>

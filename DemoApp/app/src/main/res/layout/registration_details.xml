@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/register_close_button"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="10dp"
@@ -29,19 +29,20 @@
         android:textColor="#000000"/>
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/User_name"
         android:hint="User Name"
         android:gravity="start"
         android:layout_below="@+id/register_title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/colorPrimaryDark"/>
 
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register_email"
         android:hint="Email"
@@ -49,39 +50,43 @@
         android:gravity="start"
         android:layout_below="@+id/User_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/colorPrimaryDark"/>
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register_password"
         android:hint="Password"
         android:gravity="start"
         android:layout_below="@+id/register_email"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/colorPrimaryDark"/>
 
     <CheckBox
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register_checkbox"
         android:layout_below="@+id/register_password"
         android:text="I accept the terms of use"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
         android:buttonTint="@color/colorPrimaryDark"/>
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/register_button"
         android:text="REGISTER"
+        android:textColor="@color/colorAccent"
         android:gravity="center"
         android:layout_below="@+id/register_checkbox"
         android:background="@color/colorPrimary"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
