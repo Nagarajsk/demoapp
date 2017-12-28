@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="login">#6270C2</color>
-    <color name="fb">#3B5998</color>
-    <color name="g_plus">#DD4B39</color>
-    <color name="twit">#00ACEE</color>
+    <color name="facebook">#3B5998</color>
+    <color name="googleplus">#DD4B39</color>
+    <color name="twitter">#00ACEE</color>
     <color name="wireless">#F26522</color>
 </resources>

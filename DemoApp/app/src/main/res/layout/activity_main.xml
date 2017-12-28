@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/frame"
+<RelativeLayout android:id="@+id/frame"
     android:layout_width="match_parent"
+    android:gravity="center_vertical|bottom"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,47 +22,50 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cardList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:scrollbars="vertical" />
-
-    <!-- Footer aligned to bottom -->
-    <LinearLayout
-        android:weightSum="4"
-        android:id="@+id/footer"
+        android:layout_below="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="left"
-        android:orientation="horizontal">
-   <Button
-       android:layout_weight="1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:background="@color/fb"
-       android:drawableStart="@drawable/facebook"/>
+        android:scrollbars="vertical"
+        android:layout_marginBottom="70dp"/>
 
-   <Button
-       android:layout_weight="1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-        android:background="@color/g_plus"
-       android:drawableStart="@drawable/google_plus"/>
+    <!-- Footer aligned to bottom -->
+   <LinearLayout
+            android:weightSum="4"
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+            android:gravity="start"
+            android:orientation="horizontal">
 
-   <Button
-       android:layout_weight="1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:background="@color/twit"
-       android:drawableStart="@drawable/twitter"/>
+            <ImageButton
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_height="50dp"
+               android:background="@color/facebook"
+               android:src="@drawable/facebook"/>
 
-   <Button
-       android:layout_weight="1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:background="@color/wireless"
-       android:drawableStart="@drawable/wifi_wireless"/>
-   </LinearLayout>
+            <ImageButton
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_height="50dp"
+                android:background="@color/googleplus"
+               android:src="@drawable/google_plus"/>
 
-</LinearLayout>
+            <ImageButton
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_height="50dp"
+               android:background="@color/twitter"
+               android:src="@drawable/twitter"/>
+
+            <ImageButton
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_height="50dp"
+               android:background="@color/wireless"
+               android:src="@drawable/wifi_wireless"/>
+       </LinearLayout>
+
+
+</RelativeLayout>
