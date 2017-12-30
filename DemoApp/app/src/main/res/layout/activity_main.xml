@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <!--creates a slider -->
+    <!--creates a Carousel View -->
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="wrap_content"

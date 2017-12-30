@@ -1,6 +1,7 @@
 package com.example.bitjini.demoapp;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +9,6 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -22,7 +22,6 @@ public class MainActivity extends Navigation_Drawer {
 
     //Recycler view
     RecyclerView recyclerView;
-
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
@@ -31,6 +30,19 @@ public class MainActivity extends Navigation_Drawer {
     int [] Img_res = {R.drawable.icon_1,R.drawable.icon_2,R.drawable.icon_3,R.drawable.icon_4,R.drawable.icon_5};
     ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
 
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initializeVariables();
+
+        recyclerMethod();
+
+
+    }// End of ONCREATE()
 
 
     public void initializeVariables(){
@@ -46,14 +58,8 @@ public class MainActivity extends Navigation_Drawer {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-
-        initializeVariables();
-
+    public void recyclerMethod(){
 
         //RecyclerView
         int i= 0;//initially i=0 for first image in cardview
@@ -62,10 +68,11 @@ public class MainActivity extends Navigation_Drawer {
         {
             DataProvider dataprovider = new DataProvider(Img_res[i],name);
             arrayList.add(dataprovider);
+
             i++;
         }
 
-        adapter = new RecyclerAdapter(arrayList);
+        adapter = new RecyclerAdapter(arrayList,this);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -79,8 +86,8 @@ public class MainActivity extends Navigation_Drawer {
                 //Toast.makeText(MainActivity.this, "Position :"+position, Toast.LENGTH_SHORT).show();
                 switch (position){
                     case 0 :
-                       gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/appointment.html");
-                       break;
+                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/appointment.html");
+                        break;
 
                     case 1 :
                         gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/doctors.html");
@@ -106,8 +113,7 @@ public class MainActivity extends Navigation_Drawer {
             }
         }));
 
-
-    }// EnD OF ONCREATE()
+    }
 
 
 
@@ -169,6 +175,7 @@ public class MainActivity extends Navigation_Drawer {
 
         }
     }
+
 
 
 }

@@ -1,5 +1,7 @@
 package com.example.bitjini.demoapp;
 
+import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +21,12 @@ import java.util.ArrayList;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
 
     private ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
+    Context context;
 
 
-
-    public RecyclerAdapter(ArrayList<DataProvider> arrayList) {
+    public RecyclerAdapter(ArrayList<DataProvider> arrayList, Context context) {
         this.arrayList = arrayList;
+        this.context=context;
     }
 
 
@@ -42,7 +45,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
         DataProvider dataprovider = arrayList.get(position);
         holder.imageView.setImageResource(dataprovider.getImg_res());
-        holder.title.setText(dataprovider.get_title());
+        holder.card_name.setText(dataprovider.get_title());
     }
 
     @Override
@@ -50,17 +53,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         return arrayList.size();
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder
+    public class RecyclerViewHolder extends RecyclerView.ViewHolder
     {
 
         ImageView imageView;
-        TextView title;
+        TextView card_name;
         public  RecyclerViewHolder(View view)
         {
             super(view);
 
             imageView = (ImageView) view.findViewById(R.id.image_icon);
-            title = (TextView) view.findViewById(R.id.title);
+            card_name = (TextView) view.findViewById(R.id.card_name);
+
+            //To change the FONT FAMILY of cardview title
+            Typeface typeface = Typeface.createFromAsset(context.getAssets(),"fonts/poppins-v5-latin-regular.ttf");
+            card_name.setTypeface(typeface);
 
         }
     }

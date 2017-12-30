@@ -18,7 +18,7 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
@@ -32,19 +32,18 @@
                    android:layout_height="wrap_content"
                    android:orientation="horizontal"
                    android:weightSum="2"
-                   android:layout_alignParentRight="true"
+                   android:layout_alignParentEnd="true"
                    android:layout_margin="8dp"
                    android:layout_gravity="end">
 
                    <Button
                        android:layout_weight="1"
                        android:id="@+id/toolbar_login"
-                       android:layout_width="120dp"
+                       android:layout_width="110dp"
                        android:layout_height="35dp"
                        android:background="@color/login"
                        android:drawableStart="@drawable/login_icon"
                        android:text="Login"
-                       android:drawablePadding="8dp"
                        android:layout_margin="5dp"
                        android:textAlignment="center"
                        android:textAllCaps="false"
@@ -54,7 +53,7 @@
                        android:layout_weight="1"
                        android:layout_margin="5dp"
                        android:id="@+id/toolbar_register"
-                       android:layout_width="120dp"
+                       android:layout_width="110dp"
                        android:layout_height="35dp"
                        android:background="@color/login"
                        android:drawableStart="@drawable/register_icon"
@@ -65,16 +64,16 @@
 
                </LinearLayout>
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="65dp"
                 android:gravity="center"
-                android:layout_marginStart="-40dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="-50dp"
+                android:layout_marginBottom="5dp"
                 android:text="C P Pandey &amp; co."
                 android:textColor="@color/colorAccent"
-                android:textSize="18dp" />
+                android:textSize="22sp" />
 
            </RelativeLayout>
 

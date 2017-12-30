@@ -1,11 +1,9 @@
 package com.example.bitjini.demoapp;
 
 import android.content.Intent;
-import android.os.Handler;
+import android.graphics.Typeface;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -24,7 +23,7 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
     // index to identify current nav menu item
     public static int navItemIndex = 0;
 
-    // tags used to attach the fragments
+    // tags used to attach the Pages
     private static final String TAG_HOME = "home";
     private static final String TAG_TEAM = "team";
     private static final String TAG_ENQUIRY = "enquiry";
@@ -32,18 +31,12 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
     private static final String TAG_CONTACT = "contact";
     public static String CURRENT_TAG = TAG_HOME;
 
-    // flag to load home fragment when user presses back key
-    private boolean shouldLoadHomeFragOnBackPress = true;
-    private Handler mHandler;
-
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
     Toolbar toolbar;
-
     LinearLayout fullLayout;
     CoordinatorLayout actContent;
-
     Button toolbarLogin,toolbarRegister;
 
     @Override
@@ -52,33 +45,45 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
         // Your base layout here
         fullLayout = (LinearLayout) getLayoutInflater().inflate(R.layout.activity_navigation_drawer, null);
         actContent = (CoordinatorLayout) fullLayout.findViewById(R.id.drawCordinate);
-        // Setting the content of layout your provided to the act_content frame
+        // Setting the content of layout you provided to the act_content frame
         getLayoutInflater().inflate(layoutResID, actContent, true);
         super.setContentView(fullLayout);
         setSupportActionBar(toolbar);
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
-
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-        mHandler = new Handler();
-
+        //initialize variables
+        initialize_variables();
 
         // initializing navigation menu
         setUpNavigationView();
 
-        //initialize variables
-        initialize_variables();
-
-        //Calling onclickListener
+        //Calling onclickListener to Display Dialog Box
         onClickListeners();
 
+        //To change the FONT FAMILY of toolbar text
+        fontFamily();
 
 
     }//END OF ONCREATE
 
+    //To change the FONT FAMILY of toolbar text
+    public void fontFamily() {
+        TextView textView = (TextView)findViewById(R.id.toolbar_title);
+        Button toolbar_login = (Button)findViewById(R.id.toolbar_login);
+        Button toolbar_register = (Button)findViewById(R.id.toolbar_register);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/poppins-v5-latin-regular.ttf");
+
+        textView.setTypeface(typeface);
+        toolbar_login.setTypeface(typeface);
+        toolbar_register.setTypeface(typeface);
+    }
+
     public void initialize_variables(){
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         toolbarLogin = (Button)findViewById(R.id.toolbar_login);
         toolbarRegister =(Button)findViewById(R.id.toolbar_register);
     }
@@ -90,6 +95,7 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
     }
 
 
+    //OnClick Method to Display Dialog Box
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -115,45 +121,11 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
     }
 
 
-
-
-
-
-    /***
-     * Returns respected fragment that user
-     * selected from navigation menu
-     */
-    private void loadHomeFragment() {
+    //Returns respected Page that user
+    //selected from navigation menu
+    private void loadHomePage() {
         // selecting appropriate nav menu item
         selectNavMenu();
-
-        // Sometimes, when fragment has huge data, screen seems hanging
-        // when switching between navigation menus
-        // So using runnable, the fragment is loaded with cross fade effect
-
-        Runnable mPendingRunnable = new Runnable() {
-            private Fragment homeFragment;
-
-            public Fragment getHomeFragment() {
-                return homeFragment;
-            }
-
-            @Override
-            public void run() {
-                // update the main content by replacing fragments
-                Fragment fragment = getHomeFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                        android.R.anim.fade_out);
-//                fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
-                fragmentTransaction.commitAllowingStateLoss();
-            }
-        };
-
-        // If mPendingRunnable is not null, then add to the message queue
-        if (mPendingRunnable != null) {
-            mHandler.post(mPendingRunnable);
-        }
 
         //Closing drawer on item click
         drawer.closeDrawers();
@@ -161,7 +133,6 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
         // refresh toolbar menu
         invalidateOptionsMenu();
     }
-
 
     private void selectNavMenu() {
         navigationView.getMenu().getItem(navItemIndex).setChecked(true);
@@ -198,7 +169,7 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
                     case R.id.nav_departments:
                         navItemIndex = 3;
                         CURRENT_TAG = TAG_DEPARTMENTS;
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/departments");
+                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/departments.html");
                         break;
                     case R.id.nav_contact:
                         navItemIndex = 4;
@@ -219,11 +190,13 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
                 }
                 menuItem.setChecked(true);
 
-                loadHomeFragment();
+                loadHomePage();
 
                 return true;
-            }
-        });
+
+            }  //End of onNavigationItemSelected() Method
+
+        }); //End of setNavigationItemSelectedListener() Method
 
 
         ActionBarDrawerToggle actionBarDrawerToggle = new
@@ -248,9 +221,8 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
 
         //calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
-    }
 
-
+    }//End of setUpNavigationView() Method
 
 
     @Override
@@ -260,31 +232,8 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
             return;
         }
 
-        // This code loads home fragment when back key is pressed
-        // when user is in other fragment than home
-        if (shouldLoadHomeFragOnBackPress) {
-            // checking if user is on other navigation menu
-            // rather than home
-            if (navItemIndex != 0) {
-                navItemIndex = 0;
-                CURRENT_TAG = TAG_HOME;
-                loadHomeFragment();
-                return;
-            }
-        }
-
         super.onBackPressed();
-    }
 
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        return super.onOptionsItemSelected(item);
     }
 
 }
