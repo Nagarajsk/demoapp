@@ -12,12 +12,12 @@
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
-        app:strokeColor="#FF777777"
+        app:strokeColor="#FFFFFF"
         app:strokeWidth="1dp"/>
 
     <android.support.v7.widget.RecyclerView

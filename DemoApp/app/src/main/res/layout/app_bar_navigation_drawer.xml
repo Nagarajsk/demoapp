@@ -39,26 +39,35 @@
                    <Button
                        android:layout_weight="1"
                        android:id="@+id/toolbar_login"
-                       android:layout_width="110dp"
-                       android:layout_height="35dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="30dp"
                        android:background="@color/login"
                        android:drawableStart="@drawable/login_icon"
                        android:text="Login"
-                       android:layout_margin="5dp"
-                       android:textAlignment="center"
+                       android:textSize="14sp"
+                       android:gravity="bottom"
+
                        android:textAllCaps="false"
-                       android:textColor="@color/colorAccent" />
+                       android:textColor="@color/colorAccent"
+                       android:layout_margin="5dp"
+                       android:paddingStart="5dp"
+                       android:paddingEnd="12dp"
+                       />
 
                    <Button
                        android:layout_weight="1"
                        android:layout_margin="5dp"
                        android:id="@+id/toolbar_register"
-                       android:layout_width="110dp"
-                       android:layout_height="35dp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="30dp"
+                       android:paddingStart="5dp"
+                       android:paddingEnd="12dp"
+                       android:gravity="bottom"
+
                        android:background="@color/login"
                        android:drawableStart="@drawable/register_icon"
                        android:text="Register"
-                       android:textAlignment="center"
+                       android:textSize="14sp"
                        android:textAllCaps="false"
                        android:textColor="@color/colorAccent" />
 
@@ -67,7 +76,7 @@
                 android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="50dp"
                 android:gravity="center"
                 android:layout_marginStart="-50dp"
                 android:layout_marginBottom="5dp"
