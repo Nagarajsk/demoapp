@@ -18,7 +18,9 @@
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FFFFFF"
-        app:strokeWidth="1dp"/>
+        app:strokeWidth="1dp"
+        app:indicatorGravity="start|bottom"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cardList"

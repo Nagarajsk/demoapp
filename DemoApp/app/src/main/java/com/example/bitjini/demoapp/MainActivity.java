@@ -51,7 +51,7 @@ public class MainActivity extends Navigation_Drawer {
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
-
+        
         //RecyclerView
         recyclerView = (RecyclerView)findViewById(R.id.cardList);
         title = getResources().getStringArray(R.array.cardview_title);

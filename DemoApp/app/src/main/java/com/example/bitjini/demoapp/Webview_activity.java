@@ -13,96 +13,14 @@ public class Webview_activity extends Navigation_Drawer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
-
         webView = (WebView)findViewById(R.id.web);
-//        WebSettings webSettings = webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//
-//
-//
-//        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-//        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//
-//        //To Enable APP cache
-//        webView.getSettings().setAppCacheEnabled(true);
-//        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-//
-//        //Enable DOM Storage
-//        webSettings.setDomStorageEnabled(true);
-//        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-//
-//        webSettings.setUseWideViewPort(true);
-//        webSettings.setSavePassword(true);
-//        webSettings.setSaveFormData(true);
-//        webSettings.setEnableSmoothTransition(true);
 
         String data = getIntent().getExtras().getString("URL");
 
        // Log.i("TAG","Recieved data is: "+data);
 
-        //webView.loadUrl(data);
-
         startWebView(data);
-
-
-        //webView.setWebViewClient(new MyWebViewClient());
-
     }
-
-//    private class MyWebViewClient extends WebViewClient{
-//        @Override
-//        public boolean shouldOverrideUrlLoading(WebView view, String url){
-//            if ((Uri.parse(url).getHost().equals("URL")))
-//            {
-//                return false;
-//            }else{
-//                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(url));
-//                startActivity(intent);
-//            }
-//
-//            return  true;
-//        }
-//
-//        ProgressDialog pd=null;
-//
-//        @Override
-//        public void onPageStarted(WebView view, String url, Bitmap favicon){
-//            pd= new ProgressDialog(Webview_activity.this);
-//            pd.setTitle("Please wait...");
-//            pd.setMessage("Loading...");
-//            pd.show();
-//
-//            super.onPageStarted(view,url,favicon);
-//        }
-//
-//        @Override
-//        public  void onPageFinished(WebView view,String url){
-//            super.onPageFinished(view, url);
-//            pd.dismiss();
-//        }
-//
-//    }
-//
-//
-//
-//    @Override
-//    public boolean onKeyDown(int keycode, KeyEvent event){
-//        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-//            switch (keycode){
-//                case KeyEvent.KEYCODE_BACK:
-//                    if (webView.canGoBack()){
-//                        webView.goBack();
-//                    }else{
-//                        finish();
-//                    }
-//
-//                    return true;
-//            }
-//        }
-//
-//        return super.onKeyDown(keycode,event);
-//    }
-
 
     private void startWebView(String url) {
 
@@ -123,7 +41,7 @@ public class Webview_activity extends Navigation_Drawer {
                 if (progressDialog == null) {
 
                     progressDialog = new ProgressDialog(Webview_activity.this,R.style.MyAlertDialogStyle);
-                    progressDialog.setMessage("Please Wait...\n\nPage is Loading...");
+                    progressDialog.setMessage("Please Wait...");
                     progressDialog.show();
                 }
             }
@@ -163,8 +81,5 @@ public class Webview_activity extends Navigation_Drawer {
             super.onBackPressed();
         }
     }
-
-
-
 
 }
