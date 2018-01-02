@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="300dp"
-    android:minHeight="350dp">
+    android:minHeight="320dp">
 
     <ImageButton
 
@@ -27,9 +27,8 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:textColor="@color/colorPrimaryDark"
-
         android:layout_below="@+id/closeBtn"/>
 
     <EditText
@@ -39,6 +38,7 @@
         android:id="@+id/login_email"
         android:inputType="textEmailAddress"
         android:hint="Email"
+        android:textSize="14sp"
         android:gravity="start"
         android:layout_below="@+id/login_title"
         android:layout_centerHorizontal="true"
@@ -53,6 +53,7 @@
         android:inputType="textPassword"
         android:id="@+id/login_password"
         android:hint="Password"
+        android:textSize="14sp"
         android:gravity="start"
         android:layout_below="@+id/login_email"
         android:layout_centerHorizontal="true"
@@ -66,6 +67,7 @@
         android:id="@+id/login_checkbox"
         android:layout_below="@+id/login_password"
         android:text="Remember me ?"
+        android:textSize="14sp"
         android:layout_centerHorizontal="true"
         android:buttonTint="@color/colorPrimaryDark"
         android:layout_marginTop="20dp"/>
@@ -75,6 +77,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/login_button"
         android:text="LOGIN"
+        android:textSize="14sp"
         android:gravity="center"
         android:textColor="@color/colorAccent"
         android:background="@color/colorPrimary"

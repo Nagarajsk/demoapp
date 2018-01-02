@@ -1,23 +1,11 @@
 package com.example.bitjini.demoapp;
 
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-import com.example.bitjini.demoapp.R;
-
-public class Webview_activity extends AppCompatActivity {
+public class Webview_activity extends Navigation_Drawer {
 
     private  WebView webView;
     @Override
@@ -152,7 +140,6 @@ public class Webview_activity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
 
         // Other webview options
-
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);

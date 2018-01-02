@@ -26,46 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:layout_marginBottom="70dp"/>
+        android:layout_marginBottom="58dp"/>
 
     <!-- Footer aligned to bottom -->
-   <LinearLayout
-            android:weightSum="4"
-            android:id="@+id/footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-            android:gravity="start"
-            android:orientation="horizontal">
-
-            <ImageButton
-               android:layout_weight="1"
-               android:layout_width="0dp"
-               android:layout_height="50dp"
-               android:background="@color/facebook"
-               android:src="@drawable/facebook"/>
-
-            <ImageButton
-               android:layout_weight="1"
-               android:layout_width="0dp"
-               android:layout_height="50dp"
-                android:background="@color/googleplus"
-               android:src="@drawable/google_plus"/>
-
-            <ImageButton
-               android:layout_weight="1"
-               android:layout_width="0dp"
-               android:layout_height="50dp"
-               android:background="@color/twitter"
-               android:src="@drawable/twitter"/>
-
-            <ImageButton
-               android:layout_weight="1"
-               android:layout_width="0dp"
-               android:layout_height="50dp"
-               android:background="@color/wireless"
-               android:src="@drawable/wifi_wireless"/>
-       </LinearLayout>
-
+    <include
+        layout="@layout/footer"/>
 
 </RelativeLayout>

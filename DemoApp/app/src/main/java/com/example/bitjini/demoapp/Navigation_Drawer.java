@@ -152,7 +152,8 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
                     case R.id.nav_home:
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_HOME;
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/main.html");
+                        Intent intent = new Intent(Navigation_Drawer.this,MainActivity.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.nav_team:

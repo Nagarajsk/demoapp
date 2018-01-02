@@ -175,7 +175,4 @@ public class MainActivity extends Navigation_Drawer {
 
         }
     }
-
-
-
 }
