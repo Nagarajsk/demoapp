@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinator_layout"
+    tools:context="com.example.sahar.cppandey22.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/login"
+                    android:text="Login"
+                    android:textAlignment="viewStart"
+                    android:background="@color/colorPrimaryDark"
+                    android:drawableLeft="@drawable/ic_login"
+                    android:layout_toLeftOf="@+id/register"
+                    android:textAllCaps="false"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="2dp"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/register"
+                    android:text="Register"
+                    android:drawableLeft="@drawable/ic_register"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="18dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="15dp"
+                    android:paddingLeft="8dp"
+                    android:layout_marginTop="2dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title"
+                    android:text="C P Pandey &amp; Co."
+                    android:textColor="@color/colorAccent"
+                    android:layout_below="@+id/login"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:gravity="center"
+                    android:textSize="22sp"/>
+
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.design.widget.CoordinatorLayout>

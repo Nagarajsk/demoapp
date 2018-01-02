@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageButton
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/reg_close_btn"
+        android:src="@drawable/ic_action_close"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/reg_txt"
+    android:text="Register"
+    android:textSize="35dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@+id/reg_close_btn"
+    android:textColor="#000000"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_uname"
+        android:hint="Username"
+        android:layout_below="@+id/reg_txt"
+        android:ems="15"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#000000"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_email"
+        android:hint="Email"
+        android:layout_below="@+id/reg_uname"
+        android:ems="15"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#000000"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_pwd"
+        android:hint="Password"
+        android:layout_below="@+id/reg_email"
+        android:ems="15"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#000000"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/reg_chkbox"
+        android:text="I accept the terms and conditions"
+        android:layout_below="@+id/reg_pwd"
+        android:layout_marginLeft="20dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_register"
+        android:text="Register"
+        android:layout_below="@+id/reg_chkbox"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorPrimaryDark" />
+</RelativeLayout>

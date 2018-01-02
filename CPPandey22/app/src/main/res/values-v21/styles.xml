@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:textColorSecondaryInverse">@color/cardview_dark_background</item>
+
+    </style>
+
+    <style name="custom_theme" parent="AppTheme.NoActionBar">
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:textColorSecondaryInverse">@color/cardview_dark_background</item>
+    </style>
+
+
+</resources>
