@@ -118,6 +118,7 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
         Intent intent = new Intent(this,Webview_activity.class);
         intent.putExtra("URL",url);
         startActivity(intent);
+        finish();
     }
 
 

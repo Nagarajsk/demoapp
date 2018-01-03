@@ -52,7 +52,7 @@ public class MainActivity extends Navigation_Drawer {
         carouselView.setImageListener(imageListener);
 //        carouselView.setIndicatorVisibility(View.INVISIBLE);
         carouselView.setSlideInterval(3000);
-        
+
         //RecyclerView
         recyclerView = (RecyclerView)findViewById(R.id.cardList);
         title = getResources().getStringArray(R.array.cardview_title);

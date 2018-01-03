@@ -1,6 +1,7 @@
 package com.example.bitjini.demoapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -70,16 +71,16 @@ public class Webview_activity extends Navigation_Drawer {
 
     }
 
-    // Open previous opened link from history on webview when back button pressed
+     //Open previous opened link from history on webview when back button pressed
     @Override
     // Detect when the back button is pressed
     public void onBackPressed() {
-        if(webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            // Let the system handle the back button
-            super.onBackPressed();
-        }
+        // Let the system handle the back button
+        super.onBackPressed();
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 
 }
