@@ -1,7 +1,6 @@
 package com.example.bitjini.demoapp;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,6 +50,8 @@ public class MainActivity extends Navigation_Drawer {
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
+//        carouselView.setIndicatorVisibility(View.INVISIBLE);
+        carouselView.setSlideInterval(3000);
         
         //RecyclerView
         recyclerView = (RecyclerView)findViewById(R.id.cardList);

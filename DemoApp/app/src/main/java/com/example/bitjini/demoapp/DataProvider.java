@@ -10,21 +10,10 @@ public class DataProvider {
 
     private String title;
 
-//    private long id;
-
-
-
     public DataProvider(int img_res, String title) {
         this.setImg_res(img_res);
         this.set_title(title);
-//        this.set_id(id);
-
     }
-
-
-//    public long getID() {
-//        return id;
-//    }
 
     public int getImg_res() {
         return img_res;
@@ -35,12 +24,6 @@ public class DataProvider {
         return title;
     }
 
-
-
-//    public void set_id(long id) {
-//        this.id = id;
-//    }
-
     public void setImg_res(int img_res) {
         this.img_res = img_res;
     }
@@ -48,6 +31,4 @@ public class DataProvider {
     public void set_title(String title) {
         this.title = title;
     }
-
-
 }

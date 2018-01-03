@@ -15,9 +15,6 @@ import java.util.ArrayList;
  * Created by bitjini on 16/12/17.
  */
 
-
-
-
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
 
     private ArrayList<DataProvider> arrayList = new ArrayList<DataProvider>();
@@ -28,8 +25,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         this.arrayList = arrayList;
         this.context=context;
     }
-
-
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
