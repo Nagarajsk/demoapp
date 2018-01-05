@@ -16,9 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.view.View.GONE;
+
 
 public class Navigation_Drawer extends AppCompatActivity implements View.OnClickListener {
-
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -100,7 +101,16 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
     public void onClick(View v){
         switch (v.getId()){
             case R.id.toolbar_login :
-                new Login().Show_Login_Dialog(Navigation_Drawer.this);
+                if (toolbarLogin.getText().toString().equals("Logout"))
+                {
+                    toolbarLogin.setCompoundDrawablesWithIntrinsicBounds(R.drawable.login,0,0,0);
+                    toolbarLogin.setText("Login");
+                    toolbarLogin.setPadding(0,0,35,0);
+                    toolbarRegister.setVisibility(View.VISIBLE);
+                    Toast.makeText(this,"You are Logged out", Toast.LENGTH_LONG).show();
+                }else{
+                    new Login().Show_Login_Dialog(Navigation_Drawer.this);
+                }
                 break;
 
             case R.id.toolbar_register :
@@ -189,6 +199,8 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
                     menuItem.setChecked(false);
                 } else {
                     menuItem.setChecked(true);
+
+
                 }
                 menuItem.setChecked(true);
 
@@ -236,6 +248,14 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
 
         super.onBackPressed();
 
+    }
+
+    final public void changeView(){
+        toolbarLogin.setText("Logout");
+        toolbarLogin.setCompoundDrawables(null,null,null,null);
+        //Login.setCompoundDrawablePadding(0);
+        toolbarLogin.setPadding(0,0,0,0);
+        toolbarRegister.setVisibility(GONE);
     }
 
 }
