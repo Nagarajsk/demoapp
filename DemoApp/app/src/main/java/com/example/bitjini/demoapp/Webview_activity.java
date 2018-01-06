@@ -79,6 +79,7 @@ public class Webview_activity extends Navigation_Drawer {
         super.onBackPressed();
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.left_in, R.anim.right_out);
         finish();
 
     }
