@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Webview_activity" />
-        <activity android:name=".Navigation_Drawer"></activity>
+        <activity android:name=".Navigation_Drawer"/>
     </application>
 
 </manifest>

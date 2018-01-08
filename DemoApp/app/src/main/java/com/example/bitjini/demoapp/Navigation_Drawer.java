@@ -22,17 +22,6 @@ import static android.view.View.GONE;
 
 public class Navigation_Drawer extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    // index to identify current nav menu item
-    public static int navItemIndex = 0;
-
-    // tags used to attach the Pages
-    private static final String TAG_HOME = "home";
-    private static final String TAG_TEAM = "team";
-    private static final String TAG_ENQUIRY = "enquiry";
-    private static final String TAG_DEPARTMENTS = "departments";
-    private static final String TAG_CONTACT = "contact";
-    public static String CURRENT_TAG = TAG_HOME;
-
     private DrawerLayout drawer;
     private NavigationView navigationView;
 
@@ -114,8 +103,12 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
 
     public void gotoIntent(String url){
         Intent intent = new Intent(this,Webview_activity.class);
+        // set the new task and clear flags
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         intent.putExtra("URL",url);
         startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
         finish();
     }
 
@@ -154,45 +147,37 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+
         //Check to see which item was being clicked and perform appropriate action
         switch (item.getItemId()) {
             //Replacing the main content with ContentFragment Which is our Inbox View;
             case R.id.nav_home:
-                navItemIndex = 0;
-                CURRENT_TAG = TAG_HOME;
-                //navigationView.getMenu().getItem(navItemIndex).setChecked(true);
+                item.setChecked(true);
                 Intent intent = new Intent(Navigation_Drawer.this,MainActivity.class);
+                // set the new task and clear flags
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 startActivity(intent);
                 break;
 
             case R.id.nav_team:
-                navItemIndex = 1;
-                CURRENT_TAG = TAG_TEAM;
-                //navigationView.getMenu().getItem(navItemIndex).setChecked(true);
                 gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/doctors.html");
                 break;
 
             case R.id.nav_enquiry:
-                navItemIndex = 2;
-                CURRENT_TAG = TAG_ENQUIRY;
-                //navigationView.getMenu().getItem(navItemIndex).setChecked(true);
                 gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/appointment.html");
                 break;
+
             case R.id.nav_departments:
-                navItemIndex = 3;
-                CURRENT_TAG = TAG_DEPARTMENTS;
-                //navigationView.getMenu().getItem(navItemIndex).setChecked(true);
                 gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/departments.html");
                 break;
+
             case R.id.nav_contact:
-                navItemIndex = 4;
-                CURRENT_TAG = TAG_CONTACT;
-                //navigationView.getMenu().getItem(navItemIndex).setChecked(true);
                 gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/contact.html");
                 break;
 
+
             default:
-                navItemIndex = 0;
                 break;
         }
 

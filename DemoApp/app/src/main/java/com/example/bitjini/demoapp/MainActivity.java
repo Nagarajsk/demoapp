@@ -105,6 +105,8 @@ public class MainActivity extends Navigation_Drawer {
                     case 4:
                         gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/contact.html");
                         break;
+                    default:
+                        break;
                 }
             }
 
