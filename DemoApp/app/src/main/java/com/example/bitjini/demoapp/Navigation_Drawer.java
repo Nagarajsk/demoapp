@@ -143,12 +143,13 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
             //Replacing the main content with ContentFragment Which is our Inbox View;
             case R.id.nav_home:
                 Intent intent = new Intent(Navigation_Drawer.this,MainActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 // set the new task and clear flags
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP
-                | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                finish();
                 startActivity(intent);
-                overridePendingTransition(R.anim.left_in, R.anim.right_out);
+                overridePendingTransition(R.anim.left_out, R.anim.right_in);
                 break;
 
             case R.id.nav_team:
@@ -181,7 +182,7 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
 
     public void gotoIntent(String url,int index){
         Intent intent = new Intent(this,Webview_activity.class);
-        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         // set the new task and clear flags
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS |Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
@@ -189,7 +190,7 @@ public class Navigation_Drawer extends AppCompatActivity implements View.OnClick
         intent.putExtra("INDEX",index);
         finish();
         startActivity(intent);
-        overridePendingTransition(R.anim.right_in, R.anim.left_out);
+        overridePendingTransition(R.anim.left_out, R.anim.right_in);
 
     }
 

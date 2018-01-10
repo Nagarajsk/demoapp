@@ -138,7 +138,7 @@ public class MainActivity extends Navigation_Drawer {
         intent.putExtra("URL",url);
         finish();
         startActivity(intent);
-        overridePendingTransition(R.anim.right_in, R.anim.left_out);
+        overridePendingTransition( R.anim.left_out,R.anim.right_in);
 
     }
 
