@@ -9,6 +9,8 @@ import android.webkit.WebViewClient;
 public class Webview_activity extends Navigation_Drawer {
 
     private  WebView webView;
+    int index_value;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +20,23 @@ public class Webview_activity extends Navigation_Drawer {
 
         String data = getIntent().getExtras().getString("URL");
 
+        index_value=getIntent().getExtras().getInt("INDEX");
+
        // Log.i("TAG","Recieved data is: "+data);
 
         startWebView(data);
+    }//End of ONCREATE
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // to check current activity in the navigation drawer
+        navigationView.getMenu().getItem(index_value).setChecked(true);
+
     }
+
+
+
 
     private void startWebView(String url) {
 

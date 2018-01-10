@@ -1,6 +1,7 @@
 package com.example.bitjini.demoapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,6 +43,16 @@ public class MainActivity extends Navigation_Drawer {
 
 
     }// End of ONCREATE()
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // to check current activity in the navigation drawer
+
+        navigationView.getMenu().getItem(0).setChecked(true);
+
+    }
 
 
     public void initializeVariables(){
@@ -87,23 +98,23 @@ public class MainActivity extends Navigation_Drawer {
                 //Toast.makeText(MainActivity.this, "Position :"+position, Toast.LENGTH_SHORT).show();
                 switch (position){
                     case 0 :
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/appointment.html");
+                        cardView_gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/appointment.html");
                         break;
 
                     case 1 :
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/doctors.html");
+                        cardView_gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/doctors.html");
                         break;
 
                     case 2:
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/services.html");
+                        cardView_gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/services.html");
                         break;
 
                     case 3:
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/locations.html");
+                        cardView_gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/locations.html");
                         break;
 
                     case 4:
-                        gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/contact.html");
+                        cardView_gotoIntent("http://demo.technowebmart.com/pandeyji_mob_app/contact.html");
                         break;
                     default:
                         break;
@@ -115,6 +126,19 @@ public class MainActivity extends Navigation_Drawer {
 
             }
         }));
+
+    }
+
+    public void cardView_gotoIntent(String url){
+        Intent intent = new Intent(this,Webview_activity.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        // set the new task and clear flags
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS |Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+        intent.putExtra("URL",url);
+        finish();
+        startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.left_out);
 
     }
 
